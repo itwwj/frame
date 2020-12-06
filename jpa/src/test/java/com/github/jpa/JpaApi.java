@@ -27,6 +27,7 @@ public class JpaApi {
         TestEntity entity = TestEntity.builder()
                 .name("axiba2")
                 .email("123456789")
+                .info("0000")
                 .build();
         testDao.save(entity);
     }
