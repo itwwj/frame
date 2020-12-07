@@ -1,8 +1,7 @@
 package com.github.jpa;
 
-import com.github.jpa.entity.TestEntity;
-import com.github.jpa.repository.TestDao;
-import org.junit.Before;
+import com.github.jpa.entity.User;
+import com.github.jpa.repository.UserDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +16,26 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class JpaApi {
+public class UserTest {
 
     @Autowired
-    private TestDao testDao;
+    private UserDao userDao;
 
     @Test
     public void sava() {
-        TestEntity entity = TestEntity.builder()
+        User entity = User.builder()
                 .name("axiba2")
                 .email("123456789")
                 .info("0000")
                 .build();
-        testDao.save(entity);
+        userDao.save(entity);
     }
 
+    @Test
+    public void del() {
+        User entity = User.builder()
+                .id(7)
+                .build();
+        userDao.delete(entity);
+    }
 }

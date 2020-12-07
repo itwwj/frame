@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * TODO
- * @EnableSpringDataWebSupport 启用springmvc对spring data的支持
- * @EnableWebMvc 启用spring mvc
+ * EnableSpringDataWebSupport 启用springmvc对spring data的支持
+ * EnableWebMvc 启用spring mvc
  * @author jie
  * @date 2020/12/6 21:53
  */

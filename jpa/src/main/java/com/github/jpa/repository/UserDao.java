@@ -1,6 +1,6 @@
 package com.github.jpa.repository;
 
-import com.github.jpa.entity.TestEntity;
+import com.github.jpa.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author jie
  * @date 2020/12/6 21:58
  */
-public interface TestDao extends JpaRepository<TestEntity,Integer> {
+public interface UserDao extends JpaRepository<User,Integer> {
 }
