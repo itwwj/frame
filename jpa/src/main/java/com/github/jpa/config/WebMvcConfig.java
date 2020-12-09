@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @date 2020/12/6 21:53
  */
 @Configuration
-@ComponentScan(basePackages = {"com.github.jpa.controller"})
+@ComponentScan(basePackages = {"com.github.mongo.controller"})
 @EnableWebMvc
 @EnableSpringDataWebSupport
 public class WebMvcConfig extends WebMvcConfigurerAdapter {

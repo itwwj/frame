@@ -1,0 +1,12 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  data:
+    mongodb:
+      host: 192.168.1.177
+      port: 27017
+      username: iot
+      password: root
+      database: iot

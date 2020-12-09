@@ -6,10 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 /**
  * OneToMany 一对多关联关系 如果关联关系时双向的，mappedBy属性必须用来标注，在拥有关联关系的实体一方中表示关系的字段名，也就是使用mappedBy属性是不维护关联关系的一方，值是拥有关联关系一方中标识关系的字段名

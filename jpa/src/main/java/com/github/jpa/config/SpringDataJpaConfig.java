@@ -20,7 +20,7 @@ import javax.sql.DataSource;
  * @date 2020/12/6 21:48
  */
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.github.jpa.repository"},
+@EnableJpaRepositories(basePackages = {"com.github.mongo.repository"},
         repositoryImplementationPostfix = "Impl",
         entityManagerFactoryRef = "entityManagerFactory",
         transactionManagerRef = "transactionManager")

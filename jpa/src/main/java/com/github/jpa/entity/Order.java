@@ -23,7 +23,8 @@ import javax.persistence.*;
  * * * CascadeType.MERGE （级联更新）中选择一个或多个
  * * * CascadeType.ALL 表示选择全部四项
  * * fetch属性是该实体的加载方式，有两种：LAZY和EAGER。默认为惰性加载，一般也建议使用惰性加载。
- * * mappedBy属性用于双向关联实体时使用。
+ * * mappedBy 属性用于双向关联实体时使用，指定由谁维护关联关系 。注意在使用该属性时就不能使用JoinColumn注解
+ *
  *
  *
  * @author jie
