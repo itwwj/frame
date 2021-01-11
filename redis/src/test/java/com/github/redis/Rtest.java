@@ -32,8 +32,12 @@ public class Rtest {
         superBaseRedisOps.hSet(new CacheHashKey("axiba","aaaa"),"000");
     }
     @Test
+    public void get(){
+        Object o = superBaseRedisOps.hGet(new CacheHashKey("axiba", "aaaa"));
+        System.out.println(o.toString());
+    }
+    @Test
     public void del(){
         superBaseRedisOps.hDel(new CacheHashKey("axiba","aaaa"));
     }
-
 }

@@ -1,13 +1,21 @@
 package com.github.redis.config;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.redis.locks.DistributedLock;
 import com.github.redis.locks.RedisDistributedLock;
+import com.github.redis.locks.RedissonDistributedLock;
+import com.github.redis.properies.RedissonProperties;
 import com.github.redis.repository.SuperBaseRedisOps;
 import com.github.redis.repository.impl.RedisOpsImpl;
 import com.github.redis.utils.RedisObjectSerializer;
 import com.github.redis.utils.RedisUtils;
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
+import org.redisson.config.SingleServerConfig;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
@@ -34,7 +42,7 @@ import static cn.hutool.core.util.StrUtil.COLON;
 @EnableCaching
 @Configuration
 @ConditionalOnClass(RedisConnectionFactory.class)
-@EnableConfigurationProperties({RedisProperties.class})
+@EnableConfigurationProperties({RedisProperties.class, RedissonProperties.class})
 public class RedisConfig {
 
     /**
@@ -130,14 +138,41 @@ public class RedisConfig {
     }
 
     /**
-     * 分布式锁
+     * 分布式锁(自己实现的)
      *
      * @param redisTemplate redis
      * @return 分布式锁
      */
-    @Bean
-    @ConditionalOnMissingBean
+    // @Bean
+    // @ConditionalOnMissingBean
     public DistributedLock redisDistributedLock(RedisTemplate redisTemplate) {
         return new RedisDistributedLock(redisTemplate);
+    }
+
+    /**
+     * 分布式锁（redisson的）
+     *
+     * @param redissonClient redis
+     * @return 分布式锁
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public DistributedLock redisDistributedLock(RedissonClient redissonClient) {
+        return new RedissonDistributedLock(redissonClient);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public RedissonClient getredisson(RedissonProperties redissonProperties) {
+        Config config = new Config();
+        SingleServerConfig serverConfig = config.useSingleServer()
+                .setAddress(redissonProperties.getAddress())
+                .setTimeout(redissonProperties.getTimeout())
+                .setConnectionPoolSize(redissonProperties.getConnectionPoolSize())
+                .setConnectionMinimumIdleSize(redissonProperties.getConnectionMinimumIdleSize());
+        if (StrUtil.isNotBlank(redissonProperties.getPassword())) {
+            serverConfig.setPassword(redissonProperties.getPassword());
+        }
+        return Redisson.create(config);
     }
 }

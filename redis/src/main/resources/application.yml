@@ -9,3 +9,6 @@ spring:
         max-idle: 10
         min-idle: 10
         max-active: 100
+redisson:
+  address: redis://${spring.redis.host}:${spring.redis.port}
+  password: ${spring.redis.password}

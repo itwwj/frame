@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  * @author jie
  */
 @Getter
-@SuppressWarnings({"unused", "SpellCheckingInspection", "unchecked"})
+@SuppressWarnings({"all"})
 public class RedisUtils {
 
     private static final String KEY_NOT_NULL = "key不能为空";

@@ -11,7 +11,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
- * redis分布式锁实现
+ * redis分布式锁实现（集群模式）
  *
  * @author jie
  */
@@ -57,10 +57,6 @@ public class RedisDistributedLock implements DistributedLock {
     }
 
     private boolean setRedis(final String key, final long expire) {
-        //可重入性锁
-        if (lockFlag.get() != null && lockFlag.get().equals(redisTemplate.opsForValue().get(key))) {
-            return true;
-        }
         try {
             return redisTemplate.execute((RedisCallback<Boolean>) connection -> {
                 String uuid = UUID.randomUUID().toString();

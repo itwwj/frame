@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
  * @author jie
  */
 @Slf4j
+@SuppressWarnings("all")
 public final class JsonUtil {
     private JsonUtil() {
     }
@@ -100,7 +101,7 @@ public final class JsonUtil {
     public static <T> List<T> parseArray(String content, Class<T> valueTypeRef) {
         try {
             if (!StrUtil.startWith(content, "[")) {
-                content = "[" + content +"]";
+                content = "[" + content + "]";
             }
 
             List<Map<String, Object>> list = getInstance().readValue(content, new TypeReference<List<Map<String, Object>>>() {
