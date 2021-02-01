@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS `test` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 -- 建表语句
 CREATE TABLE `dept` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,

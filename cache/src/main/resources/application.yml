@@ -1,0 +1,21 @@
+iot:
+  host: 192.168.1.177
+
+spring:
+  datasource:
+    url: jdbc:mysql://${iot.host}:3306/test?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: ${iot.host}
+    port: 6379
+    password: root
+
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.github.cache.mapper: debug

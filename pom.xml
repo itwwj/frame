@@ -14,8 +14,11 @@
         <module>mp</module>
         <module>jpa</module>
         <module>data-mongo</module>
-        <module>redis</module>
         <module>exception</module>
+        <module>arithmetic</module>
+        <module>mycat</module>
+        <module>cache</module>
+        <module>amqp</module>
     </modules>
 
     <properties>
@@ -50,11 +53,20 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-cache</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
                 <version>${dynamic.datasource.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-jpa</artifactId>
