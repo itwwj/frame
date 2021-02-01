@@ -17,8 +17,8 @@ public class AmqpTest {
     private RabbitTemplate rabbitTemplate;
 
 
-    public void pub(){
-        rabbitTemplate.convertAndSend();
+    public void pub() {
+        rabbitTemplate.convertAndSend("", "", "");
     }
 
 }
