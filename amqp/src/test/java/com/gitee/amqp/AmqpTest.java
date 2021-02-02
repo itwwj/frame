@@ -1,7 +1,8 @@
 package com.gitee.amqp;
 
+import com.gitee.amqp.pub.PubService;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -14,11 +15,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class AmqpTest {
 
     @Autowired
-    private RabbitTemplate rabbitTemplate;
+    private PubService service;
 
-
+    @Test
     public void pub() {
-        rabbitTemplate.convertAndSend("", "", "");
+        service.directSend("axiba");
+    }
+
+    @Test
+    public void pub1(){
+        service.fanoutSend("fanout");
     }
 
 }

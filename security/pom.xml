@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>amqp</artifactId>
+    <artifactId>security</artifactId>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -21,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
     </dependencies>
 </project>
