@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.1.177:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  # type-aliases扫描路径
+  # type-aliases-package:
+  # mapper xml实现扫描路径
+  mapper-locations: classpath:boot_mapper/*.xml
+  type-aliases-package: com.gitee.frame.bootmybatis.entity

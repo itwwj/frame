@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gitee.mybatis.induction.mapper.EmploeeMapper">
+
+    <resultMap id="emp" type="com.gitee.mybatis.induction.entity.Employee">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="d_id" property="dId"/>
+    </resultMap>
+
+    <resultMap id="empPlus" type="com.gitee.mybatis.induction.entity.EmployeePlus">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="d_id" property="dept.id"/>
+        <result column="d_name" property="dept.dName"/>
+    </resultMap>
+
+    <resultMap id="empPlus2" type="com.gitee.mybatis.induction.entity.EmployeePlus">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <association property="dept" javaType="com.gitee.mybatis.induction.entity.Dept">
+            <id column="d_id" property="id"/>
+            <result column="d_name" property="dName"/>
+        </association>
+    </resultMap>
+
+    <select id="selectOne" resultType="com.gitee.mybatis.induction.entity.Employee">
+    select * from tb_test where id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.gitee.mybatis.induction.entity.Employee">
+        insert into tb_test(name,age)
+        values (#{name},#{age})
+    </insert>
+
+    <insert id="insertReturnKey" parameterType="com.gitee.mybatis.induction.entity.Employee"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into tb_test(name,age)
+        values (#{name},#{age})
+    </insert>
+
+    <update id="updata" parameterType="com.gitee.mybatis.induction.entity.Employee">
+        update tb_test set name=#{name} ,age=#{age} where id=#{id};
+    </update>
+
+    <delete id="delete">
+        delete from tb_test where id=#{id};
+    </delete>
+
+    <select id="selectToMap" resultType="java.util.Map">
+    select * from tb_test where name = #{id}
+    </select>
+
+    <select id="selectEmpPlus" resultMap="empPlus">
+        select * from tb_test t,tb_dept d where t.d_id=d.id and t.id=#{id}
+    </select>
+
+    <!--id为null解决and问题   1.可以在where后边写上1=1 2.使用where标签-->
+    <select id="selectByDynamic" resultMap="emp">
+        select * from tb_test
+        <where>
+            <if test="id!=null">
+                id=#{id}
+            </if>
+            <if test="name!=null and name!=''">
+                and name=#{name}
+            </if>
+            <if test="age!=null">
+                and age=#{age}
+            </if>
+        </where>
+    </select>
+
+
+    <update id="updataByDynamic">
+        update tb_test
+        <set>
+            <if test="emp.name!=null and emp.name!=''">
+                name=#{emp.name},
+            </if>
+            <if test="emp.age!=null">
+                age=#{emp.age}
+            </if>
+        </set>
+        where id=#{id};
+    </update>
+
+
+    <!--
+        collection参数集合
+        item 变量名
+        separator 元素分隔符
+        open开始拼接字符
+        close结束拼接字符
+        index 遍历list时 index是索引 item是值 遍历map时 index是key item是值
+    -->
+    <select id="selectInIds" resultType="com.gitee.mybatis.induction.entity.Employee">
+        select * from tb_test where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")" index="i">
+            #{id}
+        </foreach>
+    </select>
+
+
+</mapper>

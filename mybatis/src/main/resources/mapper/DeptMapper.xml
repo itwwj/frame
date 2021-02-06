@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gitee.mybatis.induction.mapper.DeptMapper">
+
+<!--    <cache type="org.mybatis.caches.ehcache.EhcacheCache"></cache>-->
+
+    <resultMap id="dept" type="com.gitee.mybatis.induction.entity.Dept">
+        <id column="id" property="id"/>
+        <result column="d_name" property="dName"/>
+    </resultMap>
+
+    <resultMap id="deptPlus" type="com.gitee.mybatis.induction.entity.DeptPlus">
+        <id column="did" property="id"/>
+        <result column="d_name" property="dName"/>
+        <collection property="emps" ofType="com.gitee.mybatis.induction.entity.Employee">
+            <id column="tid" property="id"/>
+            <result column="t_name" property="name"/>
+            <result column="age" property="age"/>
+            <result column="tdid" property="dId"/>
+        </collection>
+    </resultMap>
+
+    <select id="findDeptPlusByid" resultMap="deptPlus" useCache="true">
+        select
+         d.id did,d.d_name d_name,t.id tid ,t.name t_name,t.age age ,t.d_id tdid
+         from tb_dept d left join tb_test t on d.id=t.d_id where d.id=#{id}
+    </select>
+
+</mapper>
