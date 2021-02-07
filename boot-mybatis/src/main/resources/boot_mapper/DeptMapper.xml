@@ -16,4 +16,12 @@
        * from tb_dept where id=#{id}
     </select>
 
+
+    <select id="findAll" resultMap="dept">
+        select * from tb_dept
+    </select>
+    
+    <insert id="insert">
+        insert into tb_dept(d_name) values (#{dName});
+    </insert>
 </mapper>
