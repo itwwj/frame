@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Direct模式rabbitmqz配置
  *
- * 此模式不需要交换机
+ * 此模式不需要交换机  点对点消息模型
  * @author jie
  */
 

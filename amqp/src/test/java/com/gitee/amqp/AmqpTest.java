@@ -26,5 +26,11 @@ public class AmqpTest {
     public void pub1(){
         service.fanoutSend("fanout");
     }
+    @Test
+    public void pub3(){
+        for (int i=0;i<20;i++){
+            service.topicSend("topic"+i);
+        }
 
+    }
 }

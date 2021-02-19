@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 public class TopicConfig {
 
     public static final String TOPIC_MESSAGE="topic.message";
-    public static final String TOPIC_MESSAGES="topic.messages";
+    public static final String TOPIC_MESSAGES="topic.messagess";
     public static final String TOPIC_EXCHANGE="exchange";
 
     @Bean(name="message")

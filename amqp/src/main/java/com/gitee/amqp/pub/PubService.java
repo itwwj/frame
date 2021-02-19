@@ -21,7 +21,7 @@ public class PubService {
     }
 
     public void topicSend(String str){
-        template.convertAndSend(TopicConfig.TOPIC_EXCHANGE,TopicConfig.TOPIC_MESSAGE,str);
+        template.convertAndSend(TopicConfig.TOPIC_EXCHANGE,TopicConfig.TOPIC_MESSAGES,str);
     }
 
     public void fanoutSend(String str){

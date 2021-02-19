@@ -1,6 +1,7 @@
 package com.gitee.amqp.sub;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
@@ -42,6 +43,10 @@ public class SubListener {
         log.info(str);
     }
 
+    @RabbitListener(queues = TOPIC_MESSAGES)
+    public void topic3(String str){
+        log.info(str);
+    }
 
     @RabbitListener(queues = FANOUT_A)
     public void fanoutA(String str) {
