@@ -25,6 +25,10 @@ import java.util.Properties;
  *
  * @author jie
  */
+
+
+
+//统计sql执行时间
 @Intercepts({
         @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})
 })
@@ -45,7 +49,6 @@ public class MyPlugin implements Interceptor {
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
         BoundSql boundSql = statementHandler.getBoundSql();
         String sql = boundSql.getSql();
-
         long start = System.currentTimeMillis();
         Object proceed = invocation.proceed();
         long end = System.currentTimeMillis();

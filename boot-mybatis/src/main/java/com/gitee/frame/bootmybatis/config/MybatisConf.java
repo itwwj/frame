@@ -2,6 +2,7 @@ package com.gitee.frame.bootmybatis.config;
 
 import com.gitee.frame.bootmybatis.plugin.EnumPlugin;
 import com.gitee.frame.bootmybatis.plugin.MyPlugin;
+import com.gitee.frame.bootmybatis.plugin.QueryInterceptor;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.session.Configuration;
@@ -33,6 +34,9 @@ public class MybatisConf {
                 myPlugin.setProperties(properties);
                 configuration.addInterceptor(myPlugin);
 
+                QueryInterceptor queryInterceptor = new QueryInterceptor();
+                configuration.addInterceptor(queryInterceptor);
+
                 //分页插件
                 PageInterceptor pageInterceptor = new PageInterceptor();
                 configuration.addInterceptor(pageInterceptor);
@@ -43,6 +47,11 @@ public class MybatisConf {
         };
     }
 
+    /**
+     * 批量处理的SqlSession
+     * @param sqlSessionFactory
+     * @return
+     */
     @Bean("bathSqlsession")
     public SqlSession bathSqlSession(SqlSessionFactory sqlSessionFactory) {
         return sqlSessionFactory.openSession(ExecutorType.BATCH);
