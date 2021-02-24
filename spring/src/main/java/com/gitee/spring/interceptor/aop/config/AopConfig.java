@@ -17,13 +17,5 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy
 public class AopConfig {
 
-    @Bean
-    public MathCalculator mathCalculator(){
-        return new MathCalculator();
-    }
 
-    @Bean
-    public LogAspects logAspects(){
-        return new LogAspects();
-    }
 }

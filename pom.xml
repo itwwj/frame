@@ -24,6 +24,7 @@
         <module>security</module>
         <module>dubbo</module>
         <module>cloud</module>
+        <module>java8</module>
     </modules>
 
 
