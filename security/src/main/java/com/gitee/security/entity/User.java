@@ -21,7 +21,7 @@ public class User {
     @TableId(type = IdType.AUTO)
     private Long id;
     private String username;
-    private Integer password;
+    private String password;
     @TableField("create_time")
     private LocalDateTime createTime;
     @TableField("updata_time")
