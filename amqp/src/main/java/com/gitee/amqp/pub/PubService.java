@@ -17,7 +17,7 @@ public class PubService {
     private RabbitTemplate template;
 
     public void directSend(String str){
-        template.convertAndSend(DirectConfig.DIRECT_QUEUE,str);
+        template.convertAndSend(DirectConfig.DIRECT_QUEUE_A,str);
     }
 
     public void topicSend(String str){
