@@ -3,7 +3,6 @@ package com.gitee.jdk8.lambda;
 import cn.hutool.core.io.LineHandler;
 import cn.hutool.core.lang.func.VoidFunc0;
 import lombok.AllArgsConstructor;
-import org.junit.Test;
 
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
@@ -28,7 +27,6 @@ public class FunDemo {
     /**
      * (x) -> System.out.println(x);  等同于：   System.out::println
      */
-    @Test
     public void consumer() {
         consumer("axiba", System.out::println);
     }
@@ -38,7 +36,6 @@ public class FunDemo {
     }
 
 
-    @Test
     public void test() {
         //这两个表达式一致
         BinaryOperator<Double> bo = (x, y) -> Math.pow(x, y);
@@ -46,14 +43,11 @@ public class FunDemo {
         BinaryOperator<Double> bo1 = Math::pow;
 
     }
-
-    @Test
     public void test1() {
         Function<Integer, Car> fun = Car::new;
         Car apply = fun.apply(1);
     }
 
-    @Test
     public void array() {
         /**
          * 两个表达式相同

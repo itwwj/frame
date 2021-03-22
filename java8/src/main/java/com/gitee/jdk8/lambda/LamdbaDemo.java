@@ -1,6 +1,5 @@
 package com.gitee.jdk8.lambda;
 
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,7 +51,6 @@ public class LamdbaDemo {
     /**
      * Predicate<T> 断言型接口：
      */
-    @Test
     public void test4(){
         List<String> list = Arrays.asList("Hello", "world", "Lambda", "www", "ok");
         List<String> strList = filterStr(list, (s) -> s.length() > 3);
@@ -83,13 +81,15 @@ public class LamdbaDemo {
     /**
      * Function<T, R> 函数型接口：
      */
-    @Test
     public void test3(){
         String newStr = strHandler("\t\t\t  我叫刘亚壮 ", (str) -> str.trim());
         System.out.println(newStr);
 
         String subStr = strHandler("我叫刘亚壮", (str) -> str.substring(2, 5));
         System.out.println(subStr);
+
+
+
     }
 
     /**
@@ -105,7 +105,6 @@ public class LamdbaDemo {
     /**
      * Supplier<T> 供给型接口 :
      */
-    @Test
     public void test2(){
         List<Integer> numList = getNumList(10, () -> (int)(Math.random() * 100));
 
@@ -134,7 +133,6 @@ public class LamdbaDemo {
     /**
      * Consumer<T> 消费型接口 :
      */
-    @Test
     public void test1(){
         happy(10000, (m) -> System.out.println("每次消费：" + m + "元"));
     }

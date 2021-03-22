@@ -38,7 +38,6 @@ public class WeakHashMapDemo {
         map.put(key, value);
 
         System.out.println(map);
-
         key = null;
         System.out.println(map);
         System.gc();
